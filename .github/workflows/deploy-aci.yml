@@ -42,6 +42,7 @@ jobs:
             --memory 1.5 \
             --ports 3000 \
             --restart-policy Always  \
+            --ip-address Public \
             --azure-file-volume-account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
             --azure-file-volume-account-key ${{ secrets.AZURE_STORAGE_KEY }} \
             --azure-file-volume-share-name s2blob \
