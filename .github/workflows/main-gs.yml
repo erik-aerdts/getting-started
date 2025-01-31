@@ -34,7 +34,7 @@ registry-password: ${{ secrets.REGISTRY_PASSWORD }}
 name: getting-started-github
 location: 'west europe'
 ports: '3000'
-- name: 'copy data to persistent storage'volume: 's2dockershare'
+- name: 'copy data to persistent storage'
 uses: azure@CLIv1
 with:
     azcliversion: latest
