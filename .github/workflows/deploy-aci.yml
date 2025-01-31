@@ -31,7 +31,7 @@ jobs:
       - name: Deploy to Azure Container Instances (ACI) with Persistent Storage
         run: |
           az container create \
-            --resource-group $(( secrets.RESOURCE_GROUP }} \
+            --resource-group ${{ secrets.RESOURCE_GROUP }} \
             --name getting-started \
             --image basicacr1.azurecr.io/getting-started:${{ github.sha }} \
             --registry-login-server basicacr1.azurecr.io \
