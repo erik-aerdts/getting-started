@@ -10,8 +10,8 @@ services:
     image: basicacr1.azurecr.io/getting-started
     restart: always
     environment:
-      - AZURE_STORAGE_ACCOUNT=${AZURE_STORAGE_ACCOUNT}
-      - AZURE_STORAGE_KEY=${AZURE_STORAGE_KEY}
+      - AZURE_STORAGE_ACCOUNT=s2storage
+      - AZURE_STORAGE_KEY=CfjTO14+iouFbekebcaTmcarZC1OH1e4nKvVm4ncyMZlKeLxwDstehakMgsO85qRHfV6DjhDp2MD+ASt5W3cJA==
       - AZURE_CONTAINER_NAME=s2blob
       - MOUNT_PATH=/mnt/blob
     volumes:
