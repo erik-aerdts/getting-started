@@ -34,3 +34,9 @@ registry-password: ${{ secrets.REGISTRY_PASSWORD }}
 name: getting-started-github
 location: 'west europe'
 ports: '3000'
+- name: 'copy data to persistent storage'volume: 's2dockershare'
+uses: azure@CLIv1
+with:
+    azcliversion: latest
+    inlineScript: |
+        az storage blob upload batch --destination s2blob --source data --acount-name s2storage --account-key CfjTO14+iouFbekebcaTmcarZC1OH1e4nKvVm4ncyMZlKeLxwDstehakMgsO85qRHfV6DjhDp2MD+ASt5W3cJA==
