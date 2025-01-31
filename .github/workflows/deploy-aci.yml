@@ -33,7 +33,7 @@ jobs:
           az container create \
             --resource-group s2-docker \
             --name getting-started \
-            --image basicacr1.azurecr.io/getting-started:12 \
+            --image basicacr1.azurecr.io/getting-started:10 \
             --registry-login-server basicacr1.azurecr.io \
             --registry-username ${{ secrets.REGISTRY_USERNAME  }} \
             --registry-password ${{ secrets.REGISTRY_PASSWORD }} \
