@@ -33,7 +33,7 @@ jobs:
           az container create \
             --resource-group ${{ secrets.RESOURCE_GROUP }} \
             --name getting-started \
-            --image basicacr1.azurecr.io/getting-started:10 \
+            --image basicacr1.azurecr.io/getting-started:latest \
             --registry-login-server basicacr1.azurecr.io \
             --registry-username ${{ secrets.REGISTRY_LOGIN_SERVER  }} \
             --registry-password ${{ secrets.REGISTRY_PASSWORD }} \
