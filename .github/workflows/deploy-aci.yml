@@ -49,5 +49,5 @@ jobs:
 
       - name: Verify Deployment
         run: |
-          az container show --resource-group s2-docker --name get-started-github --query ipAddress.fqdn
+          az container show --resource-group s2-docker --name getting-started --query ipAddress.fqdn
 
