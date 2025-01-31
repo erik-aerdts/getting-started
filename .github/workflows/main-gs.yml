@@ -39,4 +39,4 @@ uses: azure@CLIv1
 with:
     azcliversion: latest
     inlineScript: |
-        az storage blob upload batch --destination s2blob --source data --acount-name s2storage --account-key ${{secrets.AZURE_STORAGE_KEY}}  
+        az storage blob upload batch --destination s2blob --source data --account-name s2storage --account-key ${{secrets.AZURE_STORAGE_KEY}}  
