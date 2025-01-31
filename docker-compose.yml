@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
       target: dev
    app:
-    image: mycontainer.azurecr.io/myapp
+    image: basicacr1.azurecr.io/getting-started
     restart: always
     environment:
       - AZURE_STORAGE_ACCOUNT=${AZURE_STORAGE_ACCOUNT}
@@ -17,7 +17,7 @@ services:
     volumes:
       - blob-storage:/mnt/blob
     ports:
-      - 8000:8000
+      - 3000:3000
    volumes:
      blob-storage:
        driver: "local"
