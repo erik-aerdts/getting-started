@@ -1,0 +1,51 @@
+name: Deploy Docker to Azure Container Instances (ACI)
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Create Azure Storage File Share
+        run: |
+          az storage share create \
+            --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
+            --account-key ${{ secrets.AZURE_STORAGE_KEY }} \
+            --name s2blob
+
+      - name: Build and push Docker images using Docker Compose
+        run: |
+          docker-compose build
+          docker-compose push
+
+      - name: Deploy to Azure Container Instances (ACI) with Persistent Storage
+        run: |
+          az container create \
+            --resource-group $(( secrets.RESOURCE_GROUP }} \
+            --name getting-started \
+            --image basicacr1.azurecr.io/getting-started:${{ github.sha }} \
+            --registry-login-server basicacr1.azurecr.io \
+            --registry-username ${{ secrets.REGISTRY_LOGIN_SERVER  }} \
+            --registry-password ${{ secrets.REGISTRY_PASSWORD }} \
+            --cpu 1 \
+            --memory 1.5 \
+            --ports 3000 \
+            --azure-file-volume-account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
+            --azure-file-volume-account-key ${{ secrets.AZURE_STORAGE_KEY }} \
+            --azure-file-volume-share-name s2blob \
+            --azure-file-volume-mount-path /mnt/blob
+
+      - name: Verify Deployment
+        run: |
+          az container show --resource-group myResourceGroup --name get-started --query ipAddress.fqdn
+
