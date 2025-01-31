@@ -45,8 +45,8 @@ jobs:
             --azure-file-volume-account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
             --azure-file-volume-account-key ${{ secrets.AZURE_STORAGE_KEY }} \
             --azure-file-volume-share-name s2blob \
-            --azure-file-volume-mount-path /etc/todos  \
-            --azure-file-volume-read-only false
+            --azure-file-volume-mount-path /etc/todos  
+            
 
       - name: Verify Deployment
         run: |
