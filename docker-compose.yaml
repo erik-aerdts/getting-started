@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
       target: dev
-   app:
+    app:
     image: basicacr1.azurecr.io/getting-started
     restart: always
     environment:
@@ -18,10 +18,10 @@ services:
       - blob-storage:/mnt/blob
     ports:
       - 3000:3000
-   volumes:
-     blob-storage:
-       driver: "local"
-       driver_opts:
-         type: "none"
-         device: "/mnt/blob"
-         o: "bind"
+  volumes:
+   blob-storage:
+    driver: "local"
+    driver_opts:
+      type: "none"
+      device: "/mnt/blob"
+      o: "bind"
