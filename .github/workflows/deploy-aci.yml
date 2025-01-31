@@ -25,8 +25,8 @@ jobs:
 
       - name: Build and push Docker images using Docker Compose
         run: |
-          docker compose build
-          docker compose push
+          docker compose build || exit 1
+          docker compose push || exit 1
 
       - name: Deploy to Azure Container Instances (ACI) with Persistent Storage
         run: |
