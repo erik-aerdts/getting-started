@@ -31,16 +31,17 @@ jobs:
       - name: Deploy to Azure Container Instances (ACI) with Persistent Storage
         run: |
           az container create \
-            --resource-group ${{ secrets.RESOURCE_GROUP }} \
+            --resource-group s2-docker \
             --name getting-started \
             --image basicacr1.azurecr.io/getting-started:10 \
             --registry-login-server basicacr1.azurecr.io \
-            --registry-username ${{ secrets.REGISTRY_LOGIN_SERVER  }} \
+            --registry-username ${{ secrets.REGISTRY_USERNAME  }} \
             --registry-password ${{ secrets.REGISTRY_PASSWORD }} \
             --os-type Linux \
             --cpu 1 \
             --memory 1.5 \
             --ports 3000 \
+            --restart-policy Always  \
             --azure-file-volume-account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
             --azure-file-volume-account-key ${{ secrets.AZURE_STORAGE_KEY }} \
             --azure-file-volume-share-name s2blob \
